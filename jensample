@@ -1,0 +1,15 @@
+pipeline {
+    agent {label 'MVN3 && JDK11 && NVM && PY3'} 
+    stages {
+        stage('clone') { 
+            steps {
+                git url:'git@github.com:Kalyanand-299/openmrs-core.git' , branch : 'master' 
+            }
+        }
+        stage('install') { 
+            steps {
+                sh 'mvn package'
+            }
+        }
+    }
+}
